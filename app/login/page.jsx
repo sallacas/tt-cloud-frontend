@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import "admin-lte/plugins/fontawesome-free/css/all.min.css";
 import "admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css";
 import "admin-lte/dist/css/adminlte.min.css";
-import Link from "next/link";
 import swal from "sweetalert";
+import Link from "next/link";
 import ApiInvoke from "@/config/ApiInvoke";
 import { useRouter } from "next/navigation";
 
@@ -35,17 +35,15 @@ function Login() {
         "warning"
       );
     }
-    console.log(user);
     const rs = ApiInvoke.invokePOST("api/auth", user);
     rs.then((data) => {
-      console.log(data);
-      if (data.status !== 200) {
+      if (!data.token) {
         swal("Error", data.message, "warning");
-        return
+        return;
       }
       const { token } = data;
       localStorage.setItem("token", token);
-      router.push("/");
+      router.push("/home");
     });
   };
 
@@ -58,7 +56,7 @@ function Login() {
     <div className="hold-transition login-page">
       <div className="login-box">
         <div className="login-logo">
-          <span className="font-medium">Iniciar Sesion</span>
+          <Link href={"/"}>Talento Tech</Link>
         </div>
         <div className="card">
           <div className="card-body login-card-body">
