@@ -4,7 +4,10 @@ import ApiInvoke from "@/config/ApiInvoke";
 import swal from "sweetalert";
 
 export default function DeleteClient({ client }) {
-  const { _id, firstName, lastName } = client;
+  const _id = client?._id;
+  const firstName = client?.firstName;
+  const lastName = client?.lastName;
+
   const removeClient = async () => {
     const confirmed = confirm(
       `Are you sure you want to delete ${firstName} ${lastName}`
