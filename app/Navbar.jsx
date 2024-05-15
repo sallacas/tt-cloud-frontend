@@ -8,7 +8,7 @@ export const Navbar = () => {
 
   const closeSession = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate.push("/");
   };
 
   return (
