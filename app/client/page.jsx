@@ -6,6 +6,7 @@ import { ContentHeader } from "@/app/ContentHeader";
 import { Footer } from "@/app/Footer";
 import Link from "next/link";
 import ApiInvoke from "@/config/ApiInvoke";
+import DeleteClient from "./delete/page";
 
 export default function Client() {
   const [clients, setClients] = useState([]);
@@ -71,7 +72,7 @@ export default function Client() {
                       >
                         Edit
                       </Link>
-                      {/* <DeleteClient client={client} /> */}
+                      <DeleteClient client={client} />
                     </form>
                   </td>
                 </tr>
